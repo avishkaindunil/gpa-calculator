@@ -1,14 +1,14 @@
-// frontend/src/components/SubjectForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Removed useHistory, kept useNavigate
 
 const SubjectForm = ({ user }) => {
   const [subjectName, setSubjectName] = useState('');
   const [grade, setGrade] = useState('');
   const [credits, setCredits] = useState('');
   const [subjects, setSubjects] = useState([]);
-  const history = useHistory();
+  
+  const navigate = useNavigate();  // Replaced useHistory with useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const SubjectForm = ({ user }) => {
   };
 
   const handleNext = () => {
-    history.push('/gpa');
+    navigate('/gpa'); // Used navigate instead of history.push
   };
 
   return (
